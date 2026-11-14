@@ -48,7 +48,7 @@ The player switches world at any time with **Q** (3 s cooldown). Everything in t
 | Deleted objects | Do not exist | Flicker, broken textures, no/partial collision, sometimes overlapping real objects |
 | Map | 5 rooms + hallway/courtyard hub | +3 rooms and extra passages |
 | Kids | 5 | 8–10 (extras are "cut" kids with glitch material) |
-| Cat | Black with white stripes | Cyan/magenta, twitches now and then |
+| Cat | Solid black, stocky, no markings | Cyan/magenta, twitches now and then |
 | Extra abilities | — | Glitch Teleport, phase through glitched objects |
 | Camera | Clean | Chromatic aberration and soft scanlines |
 
@@ -79,7 +79,7 @@ All actions are available from the start so the whole kit is visible in 5 minute
 | Convert kid | T (hold 2 s) | Both | 15 s |
 
 - **Caught:** the cat respawns at the room entrance. No health, no death.
-- **Look:** one quadruped-rigged cat model. Real world = black with white stripes material; Cut world = the current cyan/magenta glitch material adapted to a skinned mesh, plus a twitch animation every 6–10 s.
+- **Look:** one quadruped-rigged cat model, stocky and solid black. Real world = solid black material; Cut world = the current cyan/magenta glitch material adapted to a skinned mesh, plus a twitch animation every 6–10 s.
 
 ---
 

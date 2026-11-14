@@ -48,7 +48,7 @@ Names use `PascalCase` after the prefix: `A_Cat_Walk`, `SM_Classroom_Desk`, `WBP
 
 | Thing | Size |
 |---|---|
-| Cat | ~45 cm long (without tail), ~30 cm tall |
+| Cat | ~45 cm long (without tail), ~33 cm tall, stocky. About 69 cm including the tail. |
 | Kid | ~130–145 cm tall |
 | Table / desk top | 75 cm (one jump) |
 | Gap under furniture | 25 cm (crouch only) |

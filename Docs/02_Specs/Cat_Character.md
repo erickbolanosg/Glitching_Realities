@@ -8,7 +8,7 @@
 |---|---|
 | Parent class | `Character` (replaces `BP_ThirdPersonCharacter`) |
 | Capsule | radius 18 cm, half-height 16 cm (fits 25 cm gaps when crouched) |
-| Mesh | `SK_Cat` (quadruped), ~45 cm long; placeholder `SM_GlitchCat` scaled to match until delivered |
+| Mesh | `SK_Cat` (quadruped, stocky), ~45 cm long without the tail, ~33 cm tall. Source: `SourceArt/Characters/Cat/SK_Cat.fbx`. Placeholder `SM_GlitchCat` until this mesh is imported. |
 | Camera | Spring arm 220 cm, socket offset Z +40, lag enabled (speed 12), collision test on |
 | Walk speed | 300 cm/s |
 | Sprint speed | 550 cm/s (Real world only, hold Shift) |
@@ -89,7 +89,7 @@ Room tracking: each `LI_<Room>` contains a trigger volume `BP_RoomVolume` (Room 
 
 | Material | Use |
 |---|---|
-| `MI_Cat_Real` | Black with white stripes |
+| `MI_Cat_Real` | Solid black. No stripes or white markings. Eyes use `T_Cat_Eye`. |
 | `MI_Cat_Cut` | Child of `M_GlitchCat_Skinned`: the current cyan/magenta glitch **without** the leg/tail WPO (the skeleton animates them), keeps the slice jitter + scanlines |
 
 Switching material is driven by `OnWorldChanged`.
