@@ -26,7 +26,7 @@ Looks: 3 base models × color variations = 5 looks. Variation is set by `KidLook
 | 3 | **Annoyed** | Sees/hears mess | `Point_Shout` montage, walk to the object, `Pick_Up`, put it back at its original transform (if `Mission` prop not yet completed) | Sees the cat do a 2nd mess within 15 s, or sees a Convert attempt → Alert; else → Routine |
 | 4 | **Alert** | As above | Shout (`SFX_Kid_Alert`), alert kids within 1500 cm in the same room (they also go Alert), chase the cat. If within 90 cm → `Grab_Cat` → broadcast `OnCatCaught` | Lost the cat for 10 s → Routine |
 | 5 | **Startled** | Hit by Pounce | Stunned 2 s, `Startled` montage. Convertible. | → Annoyed |
-| 6 | **Converted** | `Convert()` succeeded | Stop AI, glitch + smoke VFX (`NS_KidConvert`), swap to a cat mesh (`SK_Cat` with `MI_Cat_Cut`), wander slowly; broadcast `OnKidConverted` | Final |
+| 6 | **Converted** | `Convert()` succeeded | Stop AI, glitch + smoke VFX (`NS_KidConvert`), swap to a cat mesh (`SK_Cat` with `M_Cat_Hologram`), wander slowly; broadcast `OnKidConverted` | Final |
 
 Kids never damage the cat. Being caught only respawns the cat.
 

@@ -7,10 +7,10 @@
 | Property | Value |
 |---|---|
 | Parent class | `Character` (replaces `BP_ThirdPersonCharacter`) |
-| Capsule | radius 18 cm, half-height 16 cm (fits 25 cm gaps when crouched) |
-| Mesh | `SK_Cat` (quadruped, stocky), ~45 cm long without the tail, ~33 cm tall. Source: `SourceArt/Characters/Cat/SK_Cat.fbx`. Placeholder `SM_GlitchCat` until this mesh is imported. |
-| Camera | Spring arm 220 cm, socket offset Z +40, lag enabled (speed 12), collision test on |
-| Walk speed | 300 cm/s |
+| Capsule | radius 16 cm, half-height 16.5 cm |
+| Mesh | `SK_Cat` (skeleton `SKEL_Cat`, material `M_Cat_Toon`), 45 cm long without the tail, ~68 cm with it, ~32.5 cm tall, faces +X. See [Art pipeline §3](Art_Pipeline.md#3-cat). |
+| Camera | Spring arm 200 cm, socket offset Z +30 |
+| Walk speed | 100 cm/s (the walk cycle speeds up to match) |
 | Sprint speed | 550 cm/s (Real world only, hold Shift) |
 | Crouch speed | 140 cm/s; crouched half-height 10 cm |
 | Jump Z velocity | 520 cm/s (reaches 75 cm tables); air control 0.6 |
@@ -75,11 +75,15 @@ Cooldowns: see [GDD §4](../01_Design/Game_Design_Document.md#4-the-cat). Exact 
 | Sprinting | Real world only; footstep noise 0.3 every 0.4 s |
 | In air | Push/Scratch/Corrupt/Convert disabled; Pounce disabled |
 | Caught | Input disabled 1 s, `AM_Cat_Caught`, fade out, teleport to the room's `Respawn.<Room>` actor, fade in. Cooldowns are not reset. |
-| Cut world | Mesh material = `MI_Cat_Cut`; play `AM_Cat_GlitchTwitch` every random 6–10 s (only when idle or walking) |
+| Cut world | Mesh material = `M_Cat_Hologram`; play `AM_Cat_GlitchTwitch` every random 6–10 s (only when idle or walking) |
 
 Room tracking: each `LI_<Room>` contains a trigger volume `BP_RoomVolume` (Room name). The cat stores `CurrentRoom` on overlap for respawn.
 
 ## 6. Animation (`ABP_Cat`)
+
+**Implemented today:** rest pose when still, `A_Cat_Walk` when moving, blended by speed (0–15 cm/s). The walk is evaluated at a phase that advances with the distance travelled (`WalkPhase`), so the paws stay in sync with the ground. **Glitch look:** **Q** (`IA_SwitchWorld` in `IMC_Default`) calls the custom event `ToggleGlitchState`, which swaps the mesh material between `NormalMaterial` (`M_Cat_Toon`) and `GlitchMaterial` (`M_Cat_Hologram`), with a 3 s cooldown (`SwitchCooldown`). The same skeleton and walk are used in both looks; the three variables are editable in `BP_Cat`'s Details panel. `BP_WorldManager` (#12) should call `ToggleGlitchState` instead of owning a second toggle.
+
+**Target design:**
 
 - Locomotion state machine: `Idle` ↔ `Walk/Run` (blend space `BS_Cat_Locomotion` by speed 0–550) ↔ `Jump_Start` → `Jump_Loop` → `Land`; crouch layer `Crouch_Idle`/`Crouch_Walk`.
 - Idle variation: after 8 s idle, play `Idle_Sit` or `Idle_Lick` (random).
@@ -89,8 +93,8 @@ Room tracking: each `LI_<Room>` contains a trigger volume `BP_RoomVolume` (Room 
 
 | Material | Use |
 |---|---|
-| `MI_Cat_Real` | Solid black. No stripes or white markings. Eyes use `T_Cat_Eye`. |
-| `MI_Cat_Cut` | Child of `M_GlitchCat_Skinned`: the current cyan/magenta glitch **without** the leg/tail WPO (the skeleton animates them), keeps the slice jitter + scanlines |
+| `M_Cat_Toon` | Real world. Cartoon cel shading on Tripo's texture (see [Art pipeline §3](Art_Pipeline.md#3-cat)). |
+| `M_Cat_Hologram` | Cut world. Teal hologram with grid, sweeping band, flicker and glitch jumps. |
 
 Switching material is driven by `OnWorldChanged`.
 

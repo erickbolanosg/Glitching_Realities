@@ -10,7 +10,7 @@ All content is in **English**: docs, issues, PRs, commit messages, asset names, 
 | Folder | Content | Owner |
 |---|---|---|
 | `/Game/Characters/Cat` | Cat mesh, skeleton, anims, ABP, materials, `BP_Cat` | Erick |
-| `/Game/Characters/Cat/Placeholder` | Current block cat (`SM_GlitchCat`, `M_GlitchCat`) | Erick |
+| `/Game/GlitchCat` | Old block cat (`SM_GlitchCat`, `M_GlitchCat`); no longer used by `BP_Cat`, kept as a prop/reference | Erick |
 | `/Game/Characters/Kids` | Kid meshes, retargeted anims, ABP, materials, `BP_Kid` | Brianna (visuals), Andrew (logic) |
 | `/Game/AI` | StateTrees, perception configs, AI controllers, EQS | Andrew |
 | `/Game/Gameplay/Abilities` | Cat ability component and ability data | Erick |
@@ -48,7 +48,7 @@ Names use `PascalCase` after the prefix: `A_Cat_Walk`, `SM_Classroom_Desk`, `WBP
 
 | Thing | Size |
 |---|---|
-| Cat | ~45 cm long (without tail), ~33 cm tall, stocky. About 69 cm including the tail. |
+| Cat | 45 cm long (without tail), ~32.5 cm tall, stocky. About 68 cm including the tail. |
 | Kid | ~130–145 cm tall |
 | Table / desk top | 75 cm (one jump) |
 | Gap under furniture | 25 cm (crouch only) |
