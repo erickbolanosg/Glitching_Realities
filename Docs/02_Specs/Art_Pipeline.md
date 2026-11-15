@@ -21,7 +21,11 @@ Tools: **Tripo AI** first, Meshy / Hyper3D as fallback.
 7. **The cat skeleton is frozen once approved.** Do not re-rig after animations exist.
 
 ## 3. Cat
-Prompt: `low poly stylized black cat with white stripes, standing on four legs, neutral pose, tail straight back, mouth closed, game asset, clean topology`
+Approved look: stocky solid-black cat, no white markings. Reference: `SourceArt/Characters/Cat/Ref_Cat_Approved.png`.
+
+Prompt: `low poly stylized chubby solid black cat, stocky round body, short thick legs, no white markings, standing on four legs, neutral pose, tail straight back, mouth closed, game asset, clean topology`
+
+The Tripo auto-rig mis-placed the skeleton on this body. `SK_Cat.fbx` was cleaned and rigged in Blender (quadruped: `root`, `pelvis`, `spine_01`, `spine_02`, `chest`, `neck`, `head`, `jaw`, `tail_01`–`tail_04`, and `front_` / `hind_` `thigh` / `shin` / `paw` `_l` / `_r`). Do not re-rig it. The 16 clips in `SourceArt/Characters/Cat/Animations/` are in-place, 30 fps, on that skeleton. Triangle count is about 6,200.
 
 | Animation | Loop | Length | Use |
 |---|---|---|---|
